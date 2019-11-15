@@ -1,0 +1,37 @@
+version: "3.1"
+services:
+  api:
+    image:  
+      dockerfile: Dockerfile.dev
+      context: ./server
+    volumes:
+      - /app/node_modules
+      - ./server:/app
+
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: 'database'
+      MYSQL_USER: 'test'
+      MYSQL_PASSWORD: 'test'
+      MYSQL_ROOT_PASSWORD: 'test'
+    volumes:
+      - ./mysql:/var/lib/mysql
+
+  nginx:
+    restart: always
+    image:
+      dockerfile: Dockerfile.dev
+      context: ./nginx
+    ports:
+      - '3050:80'
+
+  client:
+    restart: always
+    image:
+      dockerfile: Dockerfile.dev
+      context: ./client
+    volumes:
+      - /app/node_modules
+      - ./client:/app
+      
