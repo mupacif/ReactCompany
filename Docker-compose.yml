@@ -1,26 +1,31 @@
-version: "3.1"
+version: "3.7"
 services:
   api:
-    image:  
+    build:  
       dockerfile: Dockerfile.dev
       context: ./server
+    environment:
+      MYSQL_DATABASE: '${MYSQL_DATABASE}'
+      MYSQL_USER: '${MYSQL_USER}'
+      MYSQL_PASSWORD: '${MYSQL_PASSWORD}'
+      MYSQL_ROOT_PASSWORD: '${MYSQL_ROOT_PASSWORD}'
     volumes:
       - /app/node_modules
       - ./server:/app
 
-  db:
+  mysql:
     image: mysql:5.7
     environment:
-      MYSQL_DATABASE: 'database'
-      MYSQL_USER: 'test'
-      MYSQL_PASSWORD: 'test'
-      MYSQL_ROOT_PASSWORD: 'test'
+      MYSQL_DATABASE: '${MYSQL_DATABASE}'
+      MYSQL_USER: '${MYSQL_USER}'
+      MYSQL_PASSWORD: '${MYSQL_PASSWORD}'
+      MYSQL_ROOT_PASSWORD: '${MYSQL_ROOT_PASSWORD}'
     volumes:
       - ./mysql:/var/lib/mysql
 
   nginx:
     restart: always
-    image:
+    build:
       dockerfile: Dockerfile.dev
       context: ./nginx
     ports:
@@ -28,7 +33,7 @@ services:
 
   client:
     restart: always
-    image:
+    build:
       dockerfile: Dockerfile.dev
       context: ./client
     volumes:

@@ -1,11 +1,21 @@
-var { graphql, buildSchema } = require('graphql');
+var {  buildSchema } = require('graphql');
 
-module.export  = buildSchema(`
-  type Query {
-    hello: String
+module.exports  = buildSchema(`
+  type UserT {
+    user:String
+    password:String
   }
-  schema{
-     query : Query 
+  type RootQuery {
+    hello: String!
+    test1 : String
+    user: UserT
+  }
+  type RootMutation {
+    createUser(test: String!): String!
+  }
+  schema {
+     query: RootQuery 
+     mutation: RootMutation
   }
 `);
 
