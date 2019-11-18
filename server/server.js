@@ -3,9 +3,10 @@ const bodyParser = require('body-parser');
 const graphqlHttp  = require('express-graphql');
 const graphqlSchema = require('./graphql/schema');
 const graphqlResolver = require('./graphql/resolver');
-//var mysql = require('mysql');
+const DbHelper = require('./Data/DbHelper');
+const Users = require('./Data/model/Users');
+
 const cors = require('cors');
-const keys = require('./keys');
 
 var app = express();
 app.use(cors()); //cross origins
@@ -14,20 +15,12 @@ app.use(bodyParser.json());
 const PORT = 3000;
 
 //Mysql 
-// app.use((req, res, next) => {
-//     req.mysqlDb = mysql.createConnection({
-//       host     : keys.host,
-//       user     : keys.user,
-//       password : keys.password,
-//       database : keys.database
-//     });
-//     req.mysqlDb.connect();
-//     next();
-//   });
-
-
-
-
+app.use((req, res, next) => {  
+  var dbHelper = new DbHelper();
+  var usersModel = new Users(dbHelper);
+  req.userModel = usersModel;
+  next();
+});
 
 app.use('/graphql', graphqlHttp({
     schema : graphqlSchema,
@@ -35,7 +28,14 @@ app.use('/graphql', graphqlHttp({
     graphiql : true
 }));
 
+app.get('/upgradeDb', function (req, res) {
+  req.userModel.create();
+});
+
 app.listen(PORT, function() {
   console.log("info",'Server is running at port : ' + PORT);
 });
 
+//add user - 
+//mutation 
+//upgrade 

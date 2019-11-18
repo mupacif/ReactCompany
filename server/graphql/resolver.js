@@ -1,9 +1,10 @@
+
 module.exports  = {  
     hello: function(){
         return 'Hihi'
     },
-    createUser: function({test}, req){
-        return `yup => ${test}`;
+    createUsers: function({input}, req){
+        return {'id' : input.id};
     },
     user(){
         return {

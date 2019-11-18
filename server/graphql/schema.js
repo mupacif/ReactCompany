@@ -1,17 +1,25 @@
 var {  buildSchema } = require('graphql');
-
-module.exports  = buildSchema(`
-  type UserT {
-    user:String
-    password:String
+module.exports  = buildSchema(  `
+  input User {
+    firstName : String
+    lastName : String
+    email : String
+    username : String
+    password : String
+  }
+  type Users {
+    id : Int
+    firstName : String
+    lastName : String
+    email : String
+    username : String
+    password : String
   }
   type RootQuery {
-    hello: String!
-    test1 : String
-    user: UserT
+    users : Users
   }
   type RootMutation {
-    createUser(test: String!): String!
+    createUsers (input: User) : Users
   }
   schema {
      query: RootQuery 

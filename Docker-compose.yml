@@ -5,13 +5,15 @@ services:
       dockerfile: Dockerfile.dev
       context: ./server
     environment:
-      MYSQL_DATABASE: '${MYSQL_DATABASE}'
+      MYSQL_HOST: '${MYSQL_DATABASE}'
       MYSQL_USER: '${MYSQL_USER}'
       MYSQL_PASSWORD: '${MYSQL_PASSWORD}'
       MYSQL_ROOT_PASSWORD: '${MYSQL_ROOT_PASSWORD}'
     volumes:
       - /app/node_modules
       - ./server:/app
+    ports:
+      - '3000:3000'
 
   mysql:
     image: mysql:5.7
@@ -29,14 +31,14 @@ services:
       dockerfile: Dockerfile.dev
       context: ./nginx
     ports:
-      - '3050:80'
+      - '4000:80'
 
-  client:
-    restart: always
-    build:
-      dockerfile: Dockerfile.dev
-      context: ./client
-    volumes:
-      - /app/node_modules
-      - ./client:/app
+  # client:
+  #   restart: always
+  #   build:
+  #     dockerfile: Dockerfile.dev
+  #     context: ./client
+  #   volumes:
+  #     - /app/node_modules
+  #     - ./client:/app
       
