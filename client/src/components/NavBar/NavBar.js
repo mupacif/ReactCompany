@@ -3,12 +3,10 @@ import { Link } from 'react-router-dom';
 
 function navBar() {
   return (
-    <nav>
-      <div className="navbar-left"></div>
-      <div className="navbar-right">
-        <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/about">About</Link></li>
+    <nav className="uk-navbar-container" data-uk-navbar>
+      <div className="uk-navbar-right">
+        <ul className="uk-navbar-nav">
+          <li><a data-uk-toggle="target: #login-modal">Log in</a></li>
         </ul>
       </div>
     </nav>
