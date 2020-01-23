@@ -2,18 +2,17 @@ version: "3.7"
 services:
   adminer:
     image: adminer
-    restart: always
     ports:
-      - 8080:8080
+      - '8080:8080'
 
       
   api:
-    image: mupacif/graphnode
+    image: mupacif/graphnode:latest
     environment:
-      MYSQL_HOST: ${MYSQL_DATABASE}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_HOST: mysql
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test
+      MYSQL_ROOT_PASSWORD: test
     volumes:
       - ./server:/app
     ports:
@@ -23,18 +22,18 @@ services:
     image: mysql:latest
     command: "--innodb_use_native_aio=0"
     environment:
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: mysql
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test
+      MYSQL_ROOT_PASSWORD: test
     volumes:
       - ./mysql:/var/lib/mysql
 
+
   # nginx:
-  #   restart: always
-  #   build:
-  #     dockerfile: Dockerfile.dev
-  #     context: ./nginx
+  #   image: nginx
+  #   volumes:
+  #     - ./nginx/default.conf:/etc/nginx/conf.d/
   #   ports:
   #     - '4000:80'
 

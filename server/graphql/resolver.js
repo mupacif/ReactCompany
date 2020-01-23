@@ -1,10 +1,13 @@
 const User = require('../Data/model/Users')
+const Sequelize = require('sequelize');
 module.exports  = {  
-    user: function({userInput}, req){
-        return User.findAll(
+    users: function({input}, req){
+        console.log(new Date());
+        console.log(input);
+        return User.findOne(
             {
                 where :{
-                    [Op.or] : [
+                    [Sequelize.Op.or] : [
                         {firstName: input.firstName},
                         {lastName: input.lastName},
                         {email:input.email},
@@ -13,7 +16,7 @@ module.exports  = {
                     ]
                 }
             }   
-    )
+        )
     },
     createUsers: function({input}, req){
        return  User.create({
