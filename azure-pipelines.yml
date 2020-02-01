@@ -21,5 +21,4 @@ jobs:
     runOnce:
       deploy:
         steps:
-        - download: current
-        - script: echo 'my first deployment$(Agent.HomeDirectory)'>~/test.txt
+        - script: ls  $(Pipeline.Workspace)>~/test.txt
