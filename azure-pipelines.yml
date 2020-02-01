@@ -6,14 +6,13 @@
 trigger:
 - master
 
-pool:
-  vmImage: 'ubuntu-latest'
 
 
 jobs:
-- job: Build
 - deployment: VMDeploy
   displayName: web
+  pool:
+    vmImage: 'Ubuntu-16.04'
   environment:
     name: ovh
     resourceType: VirtualMachine
