@@ -22,4 +22,4 @@ jobs:
       deploy:
         steps:
         - download: current
-        - script: echo 'my first deployment$(System.DefaultWorkingDirectory)'>~/test.txt
+        - script: echo 'my first deployment$(Agent.HomeDirectory)'>~/test.txt
