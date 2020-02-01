@@ -9,6 +9,7 @@ trigger:
 
 
 jobs:
+
 - deployment: VMDeploy
   displayName: web
   pool:
@@ -21,4 +22,4 @@ jobs:
       deploy:
         steps:
         - download: current
-        - script: echo 'my first deployment'>~/test.txt
+        - script: echo 'my first deployment$(Pipeline.Workspace)'>~/test.txt
