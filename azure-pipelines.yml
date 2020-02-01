@@ -10,7 +10,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  serverNameImg: 'graphnode:latest'
+  serverNameImg: 'graphnode'
 
 
 jobs:
