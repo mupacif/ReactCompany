@@ -6,18 +6,9 @@
 trigger:
 - master
 
-pool:
-  vmImage: 'ubuntu-latest'
-
-variables:
-  serverNameImg: 'graphnode'
 
 
 jobs:
-- job: Build
- 
-
-
 - deployment: VMDeploy
   displayName: web
   environment:
