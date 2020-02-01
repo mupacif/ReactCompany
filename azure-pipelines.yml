@@ -6,9 +6,12 @@
 trigger:
 - master
 
+pool:
+  vmImage: 'ubuntu-latest'
 
 
 jobs:
+- job: Build
 - deployment: VMDeploy
   displayName: web
   environment:
@@ -18,4 +21,5 @@ jobs:
     runOnce:
       deploy:
         steps:
+        - download: current
         - script: echo 'my first deployment'>~/test.txt
