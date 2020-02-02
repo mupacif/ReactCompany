@@ -24,8 +24,8 @@ services:
       MYSQL_USER: test
       MYSQL_PASSWORD: test
       MYSQL_ROOT_PASSWORD: test
-    volumes:
-      - ./server:/app
+    # volumes:
+    #   - ./server:/app
     ports:
       - '3000:3000'
     depends_on:
