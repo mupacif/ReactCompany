@@ -10,15 +10,15 @@ trigger:
 
 jobs:
 - job: Build
+  pool:
+    vmImage: 'Ubuntu-16.04'
   steps:
     - script:  echo test>$(Build.ArtifactStagingDirectory)/$(Build.BuildId).txt
-    - upload: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).txt
+    - publish: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).txt
       artifact: drop
 
 - deployment: VMDeploy
   displayName: web
-  pool:
-    vmImage: 'Ubuntu-16.04'
   environment:
     name: ovh
     resourceType: VirtualMachine
