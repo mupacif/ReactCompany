@@ -13,3 +13,5 @@ http://tests.pacee.net/graphql
 http://tests.pacee.net/adminer
 
 http://tests.pacee.net:9090 (phpmyadmin)
+
+https://eu-west-1.console.aws.amazon.com/cloud9/ide/522acf5b50d74d20a9d7003dad43a110  (Server Online Editor)
