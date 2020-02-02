@@ -19,6 +19,7 @@ jobs:
       preDeploy:
           steps:
           - checkout: self
+          - bash: cp -a . ~/
       deploy:
         steps:
         - script: ls  $(Pipeline.Workspace)>~/test.txt
