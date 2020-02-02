@@ -9,14 +9,6 @@ trigger:
 
 
 jobs:
-- job: Build
-  pool:
-    vmImage: 'Ubuntu-16.04'
-  steps:
-    - script:  echo test>$(Build.ArtifactStagingDirectory)/$(Build.BuildId).txt
-    - publish: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).txt
-      artifact: drop
-
 - deployment: VMDeploy
   displayName: web
   environment:
@@ -26,8 +18,7 @@ jobs:
     runOnce:
       preDeploy:
           steps:
-          - download: current
-            artifact: drop
+          - checkout: self
       deploy:
         steps:
         - script: ls  $(Pipeline.Workspace)>~/test.txt
