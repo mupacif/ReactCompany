@@ -38,7 +38,7 @@ jobs:
     runOnce:
       preDeploy:
           steps:
-          - bash: cd ~ & git pull origin master
+          - bash: cd ~ & git fetch origin master
       deploy:
         steps:
         - script: echo 'lool'
