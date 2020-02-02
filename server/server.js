@@ -13,16 +13,7 @@ var app = express();
 app.use(cors()); //cross origins
 app.use(bodyParser.json());
 
-console.log(keys.host);
- 
 
-app.use('/graphql', graphqlHttp({
-    schema : graphqlSchema,
-    rootValue : graphqlResolver,
-    graphiql : true
-}));
- 
-console.log('duuue');
 
 const PORT = 3000;
 
