@@ -25,6 +25,9 @@ jobs:
   dependsOn: Build
   condition: succeeded()
   displayName: web
+  environment:
+    name: ovh
+    resourceType: VirtualMachine
   strategy:
     runOnce:
       preDeploy:
