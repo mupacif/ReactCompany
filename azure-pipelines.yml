@@ -6,7 +6,8 @@
 trigger:
 - master
 
-
+variables:
+  serverNameImg: 'graphnode'
 
 jobs:
 - job: Build
@@ -37,8 +38,7 @@ jobs:
     runOnce:
       preDeploy:
           steps:
-          - checkout: self
-          - bash: cp -a . ~/
+          - bash: cd ~ & git pull origin master
       deploy:
         steps:
         - script: echo 'lool'
