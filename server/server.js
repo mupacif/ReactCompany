@@ -22,7 +22,7 @@ app.use('/graphql', graphqlHttp({
     graphiql : true
 }));
  
-
+console.log('duuue');
 
 const PORT = 3000;
 
