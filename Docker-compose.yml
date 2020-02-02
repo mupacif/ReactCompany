@@ -5,7 +5,20 @@ services:
     ports:
       - '8080:8080'
 
+  mysql:
+    image: mysql:latest
+    command: "--innodb_use_native_aio=0"
+    environment:
+      MYSQL_DATABASE: mysql
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test
+      MYSQL_ROOT_PASSWORD: test
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./mysql:/var/lib/mysql
       
+        
   api:
     image: mupacif/graphnode:latest
     environment:
@@ -17,17 +30,9 @@ services:
       - ./server:/home/node/app
     ports:
       - '3000:3000'
+    depends_on:
+      - mysql
 
-  mysql:
-    image: mysql:latest
-    command: "--innodb_use_native_aio=0"
-    environment:
-      MYSQL_DATABASE: mysql
-      MYSQL_USER: test
-      MYSQL_PASSWORD: test
-      MYSQL_ROOT_PASSWORD: test
-    volumes:
-      - ./mysql:/var/lib/mysql
 
 
   # nginx:
