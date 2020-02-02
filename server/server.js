@@ -13,6 +13,7 @@ var app = express();
 app.use(cors()); //cross origins
 app.use(bodyParser.json());
 
+console.log(keys.host);
 
 
 const PORT = 3000;
