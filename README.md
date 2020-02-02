@@ -9,5 +9,7 @@ This is the backbone of a TriollonDollars projects that will change humanity
 ## links 
 
 http://tests.pacee.net/graphql 
+
 http://tests.pacee.net/adminer
-http://tests.pacee.net/pma (phpmyadmin)
+
+http://tests.pacee.net:9090 (phpmyadmin)
