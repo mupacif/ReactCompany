@@ -7,7 +7,7 @@ trigger:
 - master
 
 variables:
-  serverNameImg: 'graphnode'
+  serverNameImg: 'mupacif/graphnode'
  
 jobs:
 - job: Build
