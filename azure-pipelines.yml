@@ -9,6 +9,11 @@ trigger:
 
 
 jobs:
+- job: Build
+  steps:
+    - script:  echo test>$(Build.ArtifactStagingDirectory)/$(Build.BuildId).txt
+    - upload: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).txt
+      artifact: drop
 
 - deployment: VMDeploy
   displayName: web
@@ -19,6 +24,10 @@ jobs:
     resourceType: VirtualMachine
   strategy:
     runOnce:
+      preDeploy:
+          steps:
+          - download: current
+            artifact: drop
       deploy:
         steps:
         - script: ls  $(Pipeline.Workspace)>~/test.txt
