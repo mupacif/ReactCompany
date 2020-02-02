@@ -22,7 +22,7 @@ services:
       
         
   api:
-    image: mupacif/graphnode
+    image: mupacif/graphnode:latest
     environment:
       MYSQL_HOST: mysql
       MYSQL_USER: test

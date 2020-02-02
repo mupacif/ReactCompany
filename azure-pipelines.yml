@@ -8,6 +8,7 @@ trigger:
 
 variables:
   serverNameImg: 'mupacif/graphnode'
+  tagName: 'latest'
  
 jobs:
 - job: Build
@@ -19,7 +20,7 @@ jobs:
         command: buildAndPush
         Dockerfile: server/Dockerfile.dev
         containerRegistry: dockerRegistryServiceConnection
-
+        tags: $(tagName)
       
 - deployment: VMDeploy
   dependsOn: Build
