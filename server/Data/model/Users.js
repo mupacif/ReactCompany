@@ -14,14 +14,6 @@ FIELDS = {
         email : Sequelize.STRING,
         username :  Sequelize.STRING,
         password :   Sequelize.STRING        
-    },
-    graphql:{
-        id : "Int",
-        firstName : "String",
-        lastName : "String",
-        email :  "String",
-        username : "String",
-        password : "String"
     }
 };
 

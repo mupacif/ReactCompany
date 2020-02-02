@@ -1,9 +1,5 @@
 version: "3.7"
 services:
-  adminer:
-    image: adminer
-    ports:
-      - '8080:8080'
 
 
   mysql:
@@ -35,7 +31,26 @@ services:
     depends_on:
       - mysql
 
-
+  adminer:
+    depends_on:
+      - mysql
+    image: adminer
+    ports:
+      - '8080:8080'
+      
+      
+  phpmyadmin:
+    depends_on:
+      - mysql
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - '9090:80'
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: test
+      PMA_PORT: 3360 
+      MYSQL_ROOT_PASSWORD: test 
 
   # nginx:
   #   image: nginx
