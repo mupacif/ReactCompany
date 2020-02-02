@@ -14,7 +14,7 @@ services:
       MYSQL_PASSWORD: test
       MYSQL_ROOT_PASSWORD: test
     volumes:
-      - ./server:/usr/src/app
+      - ./server:/app
     ports:
       - '3000:3000'
 
