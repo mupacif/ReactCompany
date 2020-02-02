@@ -7,15 +7,14 @@ const DbHelper = require('./Data/DbHelper');
 const Users = require('./Data/model/Users');
 const sequilize = require('./Data/database')
 const cors = require('cors');
-var keys = require('../keys');
+var keys = require('./keys');
 
 var app = express();
 app.use(cors()); //cross origins
 app.use(bodyParser.json());
 
-
-
-console.log(keys.host)
+console.log(keys.host);
+ 
 
 app.use('/graphql', graphqlHttp({
     schema : graphqlSchema,
