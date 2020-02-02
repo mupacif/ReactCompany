@@ -4,6 +4,8 @@ services:
     image: adminer
     ports:
       - '8080:8080'
+    networks:
+      - examplenetwork
 
   mysql:
     image: mysql:latest
@@ -17,6 +19,8 @@ services:
       - '3306:3306'
     volumes:
       - ./mysql:/var/lib/mysql
+    networks:
+      - examplenetwork
       
         
   api:
@@ -26,6 +30,8 @@ services:
       MYSQL_USER: test
       MYSQL_PASSWORD: test
       MYSQL_ROOT_PASSWORD: test
+    networks:
+      - examplenetwork
     volumes:
       - ./server:/home/node/app
     ports:
@@ -51,3 +57,5 @@ services:
   #     - /app/node_modules
   #     - ./client:/app
       
+networks:
+  examplenetwork: 
