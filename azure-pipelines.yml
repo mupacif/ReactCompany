@@ -21,7 +21,7 @@ jobs:
       displayName: Build an image
       inputs:
         repository: $(serverNameImg)
-        command: build
+        command: buildAndPush
         Dockerfile: server/Dockerfile.dev
     - task: Docker@2
       displayName: Logout of ACR
