@@ -10,15 +10,15 @@ variables:
   serverNameImg: 'mupacif/graphnode'
  
 jobs:
-- job: Build
-  steps:
-    - task: Docker@2
-      displayName: Build an image
-      inputs:
-        repository: $(serverNameImg)
-        command: buildAndPush
-        Dockerfile: server/Dockerfile.dev
-        containerRegistry: dockerRegistryServiceConnection
+#- job: Build
+#  steps:
+#    - task: Docker@2
+#      displayName: Build an image
+#      inputs:
+#        repository: $(serverNameImg)
+#        command: buildAndPush
+#        Dockerfile: server/Dockerfile.dev
+#        containerRegistry: dockerRegistryServiceConnection
 
       
 - deployment: VMDeploy
@@ -30,9 +30,6 @@ jobs:
     resourceType: VirtualMachine
   strategy:
     runOnce:
-      preDeploy:
-          steps:
-          - bash: cd /home/reactcomp & git pull origin master
       deploy:
         steps:
-        - script: echo 'lool'
+        - script: . ~/ReactCompany/update.sh
