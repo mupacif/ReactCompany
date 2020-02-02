@@ -7,6 +7,7 @@ const DbHelper = require('./Data/DbHelper');
 const Users = require('./Data/model/Users');
 const sequilize = require('./Data/database')
 const cors = require('cors');
+var keys = require('../keys');
 
 var app = express();
 app.use(cors()); //cross origins
@@ -14,14 +15,7 @@ app.use(bodyParser.json());
 
 
 
-app.use((req, res, next) => {  
-  console.log("whyyy lol");
-  var dbHelper = new DbHelper();
-  var usersModel = new Users(dbHelper);
-  req.userModel = usersModel;
-  next();
-});
-console.log("whyy")
+console.log(keys.host)
 
 app.use('/graphql', graphqlHttp({
     schema : graphqlSchema,
