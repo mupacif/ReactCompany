@@ -9,6 +9,25 @@ trigger:
 
 
 jobs:
+- job: Build
+  steps:
+    - task: Docker@2
+      displayName: Login to Docker Hub
+      inputs:
+        command: login
+        containerRegistry: dockerRegistryServiceConnection
+    - task: Docker@2
+      displayName: Build an image
+      inputs:
+        repository: $(serverNameImg)
+        command: build
+        Dockerfile: server/Dockerfile.dev
+    - task: Docker@2
+      displayName: Logout of ACR
+      inputs:
+        command: logout
+        containerRegistry: dockerRegistryServiceConnection
+      
 - deployment: VMDeploy
   displayName: web
   environment:
