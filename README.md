@@ -19,12 +19,12 @@ https://eu-west-1.console.aws.amazon.com/cloud9/ide/522acf5b50d74d20a9d7003dad43
 
 ## useful commands for server (check if all 5 of them are running)
 
-docker ps (to see all running containers)
+docker ps (to see all running containers)  
 docker exec -it idContainer sh (go inside running container)
 
-docker service ls (list of all services/containers)
+docker service ls (list of all services/containers)  
 docker service logs idService (logs of service)
 
 
-docker stack deploy -c Docker-compose.yml test (update all service after a change)
+docker stack deploy -c Docker-compose.yml test (update all service after a change)  
 docker stact rm test (delete all services)
