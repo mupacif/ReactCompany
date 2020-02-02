@@ -1,6 +1,6 @@
 FROM node:10-alpine
 
-RUN mkdir -p /app/node_modules && chown -R node:node /app/node_modules
+RUN mkdir -p /app/node_modules && chown -R node:node /app /app/node_modules
 WORKDIR /app 
 
 
@@ -10,7 +10,7 @@ COPY package*.json /app/
 USER node
 
 
-RUN npm install
+RUN npm -g config set user root && npm install
 COPY --chown=node:node . .
 
 EXPOSE 3000

@@ -2,4 +2,4 @@
 
 cd ~/ReactCompany
 git fetch origin master
-docker stack deploy -c Docker-compose.yml TEST
+docker stack deploy -c Docker-compose.yml test
