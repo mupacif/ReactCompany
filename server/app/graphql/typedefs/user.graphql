@@ -1,0 +1,34 @@
+type Query {
+  users: [User!]!
+  login(user: LoginInput!): AuthData!
+}
+
+type Mutation {
+  register(user: RegisterInput!): AuthData!
+}
+
+type User {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  email: String!
+  password: String!
+  posts: [Post!]!
+}
+
+type AuthData {
+  userId: ID!
+  token: String!
+}
+
+input RegisterInput {
+  firstName: String!
+  lastName: String!
+  email: String!
+  password: String!
+}
+
+input LoginInput {
+  email: String!
+  password: String!
+}

@@ -1,38 +1,26 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const graphqlHttp  = require('express-graphql');
-const graphqlSchema = require('./graphql/schema');
-const graphqlResolver = require('./graphql/resolver');
-const sequilize = require('./Data/database')
-const cors = require('cors');
-var keys = require('./keys');
+const { ApolloServer, gql } = require('apollo-server');
 
-var app = express();
-app.use(cors()); //cross origins
-app.use(bodyParser.json());
+const typeDefs = require('./app/graphql/typedefs');
+const resolvers = require('./app/graphql/resolvers');
+const models = require('./app/db/models');
 
+const server = new ApolloServer({
+  typeDefs: gql`
+      ${typeDefs}
+  `,
+  resolvers,
+  context: ({ req }) => {
+    
+    const { authorization: token } = req.headers;
 
+    return { models, token };
+  }
+});
 
-app.use('/graphql', graphqlHttp({
-    schema : graphqlSchema,
-    rootValue : graphqlResolver,
-    graphiql : true
-}));
- 
-
-
-const PORT = 3000;
-
-sequilize
-.sync()
+models.sequelize.sync()
 .then(result=>{
-  app.listen(PORT, function() {
-    console.log("info",'Server is running at port : ' + PORT);
+  server.listen({ port: 3000 }).then(({ url }) => {
+    console.log(`Server ready at ${url}`);
   });
 })
 
-
-
-//add user - 
-//mutation 
-//upgrade 

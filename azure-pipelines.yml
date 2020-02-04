@@ -7,7 +7,7 @@ trigger:
 - master
 
 variables:
-  serverNameImg: 'mupacif/graphnode'
+  serverNameImg: 'mupacif/appolo'
   tagName: 'latest'
  
 jobs:
