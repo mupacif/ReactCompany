@@ -15,7 +15,7 @@ RUN  npm install;
 COPY --chown=node:node . .
 
 WORKDIR /app/db 
-RUN npx sequelize db:migrate 
+RUN npx sequelize db:migrate --env production
 
 WORKDIR /app
 EXPOSE 3000
