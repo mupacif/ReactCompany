@@ -13,5 +13,9 @@ USER node
 RUN  npm install; 
 COPY --chown=node:node . .
 
+WORKDIR /app/db 
+RUN npx sequelize db:migrate 
+
+WORKDIR /app
 EXPOSE 3000
 CMD [ "npm", "start" ]
