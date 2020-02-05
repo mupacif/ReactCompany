@@ -5,7 +5,7 @@ WORKDIR /app
 
 
 COPY package*.json /app/
-COPY app/db/migrations/* /app/db/migrations
+COPY app/db/migrations/* /app/db/migrations/
 
 #To ensure that all of the application files are owned by the non-root node user,
 USER node
