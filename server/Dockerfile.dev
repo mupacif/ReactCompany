@@ -5,7 +5,8 @@ WORKDIR /app
 
 
 COPY package*.json /app/
-
+#for sequelize migration
+COPY /app/db/config/config.json /app/db/config/
 #To ensure that all of the application files are owned by the non-root node user,
 USER node
 
