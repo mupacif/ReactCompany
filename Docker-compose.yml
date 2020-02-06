@@ -6,7 +6,7 @@ services:
     image: mysql:latest
     command: "--innodb_use_native_aio=0"
     environment:
-      MYSQL_DATABASE: mysql
+      MYSQL_DATABASE: reactcomp
       MYSQL_USER: test
       MYSQL_PASSWORD: test
       MYSQL_ROOT_PASSWORD: test

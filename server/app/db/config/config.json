@@ -18,7 +18,7 @@
   "production": {
     "username": "test",
     "password": "test",
-    "database": "mysql",
+    "database": "reactcomp",
     "host": "mysql",
     "dialect": "mysql",
     "operatorsAliases": false
