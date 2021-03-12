@@ -13,7 +13,7 @@ jobs:
       - name: Install lftp
         run: sudo apt install lftp
       - name: Deploy app build to paceenet
-        run: cd build && lftp -c "set ftp:list-options -a;
+        run: cd react/build && lftp -c "set ftp:list-options -a;
               open ftp:// ${{ secrets.PTF_CAKE }}:${{ secrets.PTF_SAUCE }}@${{ secrets.PTF_PITA }};
               cd /react;
               mirror --reverse --delete --use-cache --verbose -i ."
