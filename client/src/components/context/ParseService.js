@@ -6,9 +6,9 @@ export default class ParseService {
 
     parse;
     config =  {
-      appId: '${{ secrets.PARSEID }}',
-      masterKey: '${{ secrets.PARSEMASTERKEY }}',
-      serverUrl : '${{ secrets.PARSESERVERURL }}'
+      appId: 'myAppId',
+      masterKey: 'myMasterKey',
+      serverUrl : 'https://tests.pacee.net/api/react/parse'
     };
   
   
