@@ -1,7 +1,8 @@
 /* Packages */
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-
+import {ProvideAuth } from './components/context/auth-context';
+import {ProvideParse} from './components/context/parse-context';
 /* Containers */
 import Dashboard from './containers/Dashboard/Dashboard';
 import Website from './containers/Website/Website';
@@ -12,21 +13,22 @@ import './App.css';
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <Switch>
-          <Route path="/dashboard">
-            <Dashboard />
-          </Route>
-          <Route path="/">
-            <Website />
-          </Route>
-
-
-        </Switch>
-
-      </div>
-    </Router>
+    <ProvideParse>
+      <ProvideAuth>
+        <Router>
+          <div className="App">
+            <Switch>
+              <Route path="/dashboard">
+                <Dashboard />
+              </Route>
+              <Route path="/">
+                <Website />
+              </Route>
+            </Switch>
+          </div>
+        </Router>
+      </ProvideAuth>
+    </ProvideParse>
   );
 }
 
