@@ -2,7 +2,7 @@ import React, {  useContext, useState } from 'react';
 import Parse from 'parse';
 
 const AuthContext = React.createContext({
-    authenticated: true,
+    authenticated: false,
 });
 
 
