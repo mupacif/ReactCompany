@@ -2,7 +2,6 @@ import React from 'react';
 import { useAuth } from '../context/auth-context';
 function NavBar() {
   let auth = useAuth();
-  console.log(auth.user.authenticated )
   return (
         <nav className="uk-navbar-container" data-uk-navbar>
           <div className="uk-navbar-right">

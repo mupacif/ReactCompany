@@ -1,7 +1,7 @@
 /* Packages */
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
-
+import UIkit from '../../../node_modules/uikit/dist/js/uikit.js';
 
 /* Containers */
 import Home from './Home/Home';
@@ -10,9 +10,13 @@ import Home from './Home/Home';
 import Navbar from './../../components/NavBar/NavBar';
 import LoginModal from './../../components/Modals/LoginModal/LoginModal';
 import RegisterModal from './../../components/Modals/LoginModal/Register';
-import ResetPwdModal from './../../components/Modals/LoginModal/forgottenpwd'
+import ResetPwdModal from './../../components/Modals/LoginModal/forgottenpwd';
+import ResendMailConfirmModal from './../../components/Modals/LoginModal/resendMail'
 class Website extends Component {
 
+  closeModal = () => {
+    UIkit.modal('#login-modal').hide();
+  }
 
   render() {
     return(
@@ -20,7 +24,8 @@ class Website extends Component {
         <Navbar />
         <LoginModal  />
         <RegisterModal  />
-        <ResetPwdModal />
+        <ResetPwdModal /> 
+        <ResendMailConfirmModal />
         <Switch>
           <Route path="/about">
             <h1>About</h1>
@@ -28,8 +33,6 @@ class Website extends Component {
           <Route path="/">
             <Home />
           </Route>
-
-
         </Switch>
       </div>
     );

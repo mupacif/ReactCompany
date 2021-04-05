@@ -1,6 +1,6 @@
 /* Packages */
 import React, {useState} from 'react';
-
+import Parse from 'parse';
 import { useAuth } from '../../context/auth-context';
 import UIkit from '../../../../node_modules/uikit/dist/js/uikit.js';
 import { useParse } from '../../context/parse-context'
@@ -61,16 +61,19 @@ const LoginModal = (props) => {
           });
         }
       ).catch(err => {
-        return setError('response', true, err.message);
+        let msg = err.message;
+
+        return setError('response', true, msg, err.code);
       })    
     }
   }
 
 
-  const setError = (name, status, msg) => {
+  const setError = (name, status, msg, code) => {
     const updatedState = { ...user };
     updatedState[name].error.msg = msg;
     updatedState[name].error.status = status;
+    updatedState[name].error.code = code;
     setUser(updatedState);
   }
 
@@ -108,7 +111,7 @@ const LoginModal = (props) => {
             <div className="uk-modal-footer uk-text-right">
               <button  onClick={()=> { signInUser()}} className="uk-button uk-button-primary" type="button">Log in</button>
               { user.response.error.status ? <p style={{ color: 'red'}}>{ user.response.error.msg}</p> : '' }
-
+              { user.response.error.code === 205 && <a data-uk-toggle="target: #resendmail-modal">Resend onfirmation mail.</a> }
             </div>
 
 

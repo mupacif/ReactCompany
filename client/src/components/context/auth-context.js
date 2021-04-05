@@ -62,6 +62,7 @@ function useProvideAuth() {
 
       if ( cb  && typeof cb === 'function' ) cb();
     };
+    
   
     return {
       user,
