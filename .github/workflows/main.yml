@@ -16,4 +16,4 @@ jobs:
         run: cd client/build && lftp -c "set ftp:list-options -a;
               open ftp://${{ secrets.PTF_CAKE }}:${{ secrets.PTF_SAUCE }}@${{ secrets.PTF_PITA }};
               cd /react;
-              mirror --reverse --delete --use-cache --verbose -i ." 
+              mirror --reverse --delete --use-cache --verbose -i ."
